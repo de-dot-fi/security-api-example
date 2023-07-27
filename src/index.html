@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>DeFi Analyzer</title>
+    <style>
+        .empty-table {
+            color: grey;
+        }
+
+        .info-icon {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip {
+            position: absolute;
+            top: 25px;
+            left: -50%;
+            padding: 5px;
+            min-width: 150px;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 14px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1;
+        }
+
+        .info-icon:hover .tooltip {
+            opacity: 0.9;
+            visibility: visible;
+        }
+
+        .my-info-icon {
+            width: 15px;
+            top: -2px;
+            position: relative;
+        }
+
+        #scanner-issues {
+            text-align: center;
+        }
+
+        .grey-message {
+            color: grey;
+        }
+
+        .holders-table {
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h1>Wallet Scanner</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <w3m-core-button></w3m-core-button>
+                <span class="mx-2">or</span>
+                <input type="text" class="form-control w-50" placeholder="0x..." id="scan-input"/>
+                <button type="button" class="btn btn-success ms-2" id="scan-button">Scan Now</button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h3>Issues</h3>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Contract</th>
+                            <th>Issues</th>
+                            <th>Risk exposure</th>
+                            <th>Approved block number</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vulnerabilities-list">
+                        <tr>
+                            <td class="empty-table" colspan="4">No data yet...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h1>Token Scanner</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <input type="text" class="form-control w-50" placeholder="Paste token address..." id="scan-token-input" />
+                <button type="button" class="btn btn-success ms-2" id="scan-token-button">Scan Token</button>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12" id="scanner-issues">
+                <p class="grey-message">No issues found yet...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="build.js"></script>
+</body>
+</html>
